@@ -1648,11 +1648,16 @@ td {
         color: #fbbe3e;
       }
     
-      .post-detail .post .post-content a {
+      /* 文章内链接颜色 */
+.post-detail .post .post-content a {
     color: #5bb9cd;
 }
 .post-detail .post .post-content a:hover {
     color: #5bb9cd;
     border-bottom: 1px dotted #5bb9cd;
+}
+/* 归档页年份颜色 */
+.archives-container .year {
+    color: #ff7250;
 }
     
