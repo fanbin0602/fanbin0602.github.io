@@ -1648,3 +1648,11 @@ td {
         color: #fbbe3e;
       }
     
+      .post-detail .post .post-content a {
+    color: #5bb9cd;
+}
+.post-detail .post .post-content a:hover {
+    color: #5bb9cd;
+    border-bottom: 1px dotted #5bb9cd;
+}
+    
