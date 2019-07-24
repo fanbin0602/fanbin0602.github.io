@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.fanbin.dev</id>
     <title>MQ TALK</title>
-    <updated>2019-07-24T14:31:41.320Z</updated>
+    <updated>2019-07-24T14:35:54.589Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.fanbin.dev"/>
     <link rel="self" href="https://blog.fanbin.dev/atom.xml"/>
@@ -16,15 +16,16 @@
         <link href="https://blog.fanbin.dev/post/3UuCV633y">
         </link>
         <updated>2019-07-24T14:20:54.000Z</updated>
-        <summary type="html"><![CDATA[<p>这篇总结一下数组（最基础的数据结构）和二分查找算法（最简单却有趣的算法）。</p>
+        <summary type="html"><![CDATA[<p>这篇总结一下数组和二分查找算法。数组是计算机科学中最基础的数据结构，二分查找算法是一种最简单却有趣的算法。它们是走进算法世界最先接触的东西。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>这篇总结一下数组（最基础的数据结构）和二分查找算法（最简单却有趣的算法）。</p>
+        <content type="html"><![CDATA[<p>这篇总结一下数组和二分查找算法。数组是计算机科学中最基础的数据结构，二分查找算法是一种最简单却有趣的算法。它们是走进算法世界最先接触的东西。</p>
 <!-- more -->
 <h2 id="数组">数组</h2>
 <h3 id="数组是什么">数组是什么</h3>
 <p>数据结构是计算机程序组织和存储数据的方式，数组是计算机科学中最基本的数据结构之一。它通常是由相同类型的元素的集合组成，类似于一个列表，比如待办清单、产品目录等。</p>
 <p>比如：</p>
-<p>products = [&quot;Mac&quot;, &quot;iPad&quot;, &quot;iPhone&quot;, &quot;Watch&quot;, &quot;iPod&quot;]</p>
+<pre><code class="language-python">products = [&quot;Mac&quot;, &quot;iPad&quot;, &quot;iPhone&quot;, &quot;Watch&quot;, &quot;iPod&quot;]
+</code></pre>
 <p>这个产品列表就是一个包含五个元素的数组，每个元素是一个产品名称。</p>
 <h3 id="数组在内存中是怎么保存的">数组在内存中是怎么保存的</h3>
 <p>计算机在内存中，会分配一块连续的内存来存储数组。可以把内存看作超市门口的储物柜，储物柜的每个格子就是一个内存单元，有些格子放了东西，有些格子是空的。当计算机需要存储这个五个元素的数组时，就需要在这个储物柜中找出五个连续排列的空格子，把数组中的五个元素按顺序放进去。</p>
