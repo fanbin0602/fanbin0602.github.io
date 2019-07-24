@@ -1656,6 +1656,10 @@ td {
     color: #5bb9cd;
     border-bottom: 1px dotted #5bb9cd;
 }
+/* 文章内图片去除阴影 */
+.post-detail .post .post-content img {
+    box-shadow: none;
+}
 /* 归档页年份颜色 */
 .archives-container .year {
     color: #ff7250;
