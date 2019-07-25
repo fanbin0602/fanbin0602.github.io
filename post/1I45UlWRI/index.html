@@ -1,0 +1,304 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>理解 Javascript 中变量的作用域 | MQ TALK</title>
+<meta name="description" content="<del style='color:lightgrey'>MQ is short for 懵圈儿</del>" />
+<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1564024040803">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://blog.fanbin.dev/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50640413-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-50640413-3');
+</script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://blog.fanbin.dev">
+  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1564024040803" alt="">
+  </a>
+  <h1 class="site-title">
+    MQ TALK
+  </h1>
+  <p class="site-description">
+    <del style='color:lightgrey'>MQ is short for 懵圈儿</del>
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://blog.fanbin.dev" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tag/programming/" class="menu">
+          编程
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tag/product/" class="menu">
+          产品
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tag/mathematics/" class="menu">
+          数学
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tag/physics/" class="menu">
+          物理
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tag/cognition/" class="menu">
+          新知
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tag/notes/" class="menu">
+          手记
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/post/about/" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/fanbin0602" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/imfxx" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              理解 Javascript 中变量的作用域
+            </h2>
+            <div class="post-info">
+              <span>
+                2015-07-05
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://blog.fanbin.dev/tag/programming" class="post-tag">
+                  # 编程
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>Javascript 这门语言与其他的大部分语言相比，有很多特殊性，这是很多人喜欢它或者讨厌它的原因。其中变量的作用域问题，对很多初学者来说就是一个又一个「坑」。</p>
+<p>变量的作用域在编程技能中算是一个基本概念，而在 Javascript 中，这一基本概念往往挑战者初学者的常识。</p>
+<!-- more -->
+<h3 id="基本的变量作用域">基本的变量作用域</h3>
+<p>先上例子：</p>
+<pre><code class="language-javascript">var scope = 'global';
+function checkScope(){
+    var scope = 'local';
+    console.log(scope); // local
+}
+checkScope();
+console.log(scope); // global
+</code></pre>
+<p>上面的例子中，声明了全局变量 <code>scope</code> 和函数体内的局部变量 <code>scope</code>。在函数体内部，局部变量的优先级比通明的全局变量要高，如果一个局部变量的名字与一个全局变量相同，那么，在<strong>声明局部变量的函数体范围内</strong>，局部变量将覆盖同名的全局变量。</p>
+<p>下面再看一个例子：</p>
+<pre><code class="language-javascript">scope = 'global';
+function checkScope(){
+    scope = 'local'; 
+    console.log(scope); // local
+    myScope = 'local';
+    console.log(myScope); // local
+}
+checkScope();
+console.log(scope); // local
+console.log(myScope); // local
+</code></pre>
+<p>对于初学者来说，可能会有两个疑问：为什么在函数体外，<code>scope</code> 的值也变成了 <code>local</code> ？为什么在函数体外可以访问 <code>myScope</code> 变量？</p>
+<p>这两个问题都源于一个特性。在全局作用域中声明变量可以省略 <code>var</code> 关键字，但是如果在函数体内声明变量时不使用 <code>var</code> 关键字，就会发生上面的现象。首先，函数体内的第一行语句，把全局变量中的 <code>scope</code> 变量的值改变了。而在声明 <code>myScope</code> 变量时，由于没有使用 <code>var</code> 关键字，Javascript 就会在全局范围内声明这个变量。因此，在声明局部变量时使用 <code>var</code> 关键字是个很好的习惯。</p>
+<h3 id="在-javascript-中没有块级作用域一说">在 Javascript 中，没有「块级作用域」一说</h3>
+<p>在 C 或者 Java 等语言中，<code>if</code>、<code>for</code> 等语句块内可以包含自己的局部变量，这些变量的作用域是这些语句的语句块，而在 Javascript 中，不存在「块级作用域」的说法。</p>
+<p>看下面的例子：</p>
+<pre><code class="language-javascript">function checkScope(obj){
+    var i = 0;
+    if (typeof obj == 'object') {
+        var j = 0;
+        for (var k = 0; k &lt; 10; k++) {
+            console.log(k);
+        }
+        console.log(k);
+    }
+    console.log(j);
+}
+checkScope(new Object());
+</code></pre>
+<p>在上面的例子中，每一条控制台输出语句都能输出正确的值，这是因为，由于 Javascript 中不存在块级作用域，因此，<strong>函数中声明的所有变量，无论是在哪里声明的，在整个函数中它们都是有定义的</strong>。</p>
+<p>如果要更加强调上文中 <strong><code>函数中声明的所有变量，无论是在哪里声明的，在整个函数中它们都是有定义的</code></strong> 这句话，那么还可以在后面跟一句话：<strong>函数中声明的所有变量，无论是在哪里声明的，在整个函数中它们都是有定义的，即使是在声明之前</strong>。对于这句话，有个经典的困扰初学者的「坑」。</p>
+<pre><code class="language-javascript">var a = 2;
+function test(){
+    console.log(a);
+    var a = 10;
+}
+test();
+</code></pre>
+<p>上面的例子中，控制台输出变量 <code>a</code> 的值为 <code>undefined</code>，既不是全局变量 <code>a</code> 的值 <code>2</code>,也不是局部变量 <code>a</code> 的值 <code>10</code>。首先，<strong>局部变量在整个函数体内都是有定义的</strong>，因此，局部变量 <code>a</code> 会在函数体内覆盖全局变量 <code>a</code>，而在函数体内，<strong>在 <code>var</code> 语句之前，它是不会被初始化的</strong>。如果要读取一个未被初始化的变量，将会得到一个默认值 <code>undefined</code>。</p>
+<p>所以，上面示例中的代码与下面的代码时等价的：</p>
+<pre><code class="language-javascript">var a = 2;
+function test(){
+    var a;
+    console.log(a);
+    a = 10;
+}
+test();
+</code></pre>
+<p>可见，<strong>把所有的函数声明集合起来放在函数的开头是个良好的习惯</strong>。</p>
+<h3 id="变量的真相">变量的真相</h3>
+<p>可能很多人已经注意到，在 Javascript 当中，一个变量与一个对象的一个属性，有很多相似的地方，实际上，它们并没有什么本质区别。<strong>在 Javascript 中，任何变量都是某个特定对象的属性</strong>。</p>
+<p>全局变量都是全局对象的属性。在 Javascript 解释器开始运行且没有执行 Javascript 代码之前，会有一个「全局对象」被创建，然后 Javascript 解释器会给它与定义一些属性，这些属性就是我们在 Javascript 代码中可以直接使用的内置的变量和方法。之后，每当我们定义一个全局变量，实际上是给全局对象定义了一个属性。</p>
+<p>在客户端的 Javascript 当中，这个全局变量就是 <code>Window</code> 对象，它有一个指向自己的属性 <code>window</code> ，这就是我们常用的全局变量。</p>
+<p>对于函数的局部变量，则是在函数开始执行时，会有一个对应的「调用对象」被创建，函数的局部变量都作为它的属性而存储。这样可以防止局部变量覆盖全局变量。</p>
+<h3 id="作用域链">作用域链</h3>
+<p>如果要深入理解 Javascript 中变量的作用域，那就必须拿出「作用域链」这个终极武器。</p>
+<p>首先要理解的一个名词就是「执行环境」，每当 Javascript 执行时，都会有一个对应的执行环境被创建，这个执行环境中很重要的一部分就是函数的调用对象（前面说过，调用对象是用来存储相应函数的局部变量的对象），每一个 Javascript 方法都是在自己独有的执行环境中运行的。简而言之，函数的执行环境包含了调用对象，调用对象的属性就是函数的局部变量，每个函数就是在这样的执行环境中执行，而在函数之外的代码，也在一个执行环境中，这个执行环境包含了全局变量。</p>
+<p>在 Javascript 的执行环境中，还有一个与之对应的「作用域链」，它是一个由对象组成的列表或链。</p>
+<p>当 Javascript 代码需要查询一个变量 <code>x</code> 的时候，会有一个被称为「变量名解析」的过程。它会首先检查作用域链的第一个对象，如果这个对象包含名为 <code>x</code> 的属性，那么就采用这个属性的值，否则，会继续检查第二个对象，依此类推。当检查到最后一个对象的时候仍然没有相应的属性，则这个变量会被认定为是「未定义」的。</p>
+<p>在全局的 Javascript 执行环境中，作用域链中只包含一个对象，就是全局对象。而在函数的执行环境中，则同时包含函数的调用对象。由于 Javascript 的函数是可以嵌套的，因此每个函数执行环境的作用域链可能包含不同数目个对象，一个非嵌套的函数的执行环境中，作用域链包含了这个函数的调用对象和全局对象，而在嵌套的函数的执行环境中，作用域链包含了嵌套的每一层函数的调用对象以及全局变量。</p>
+<p>我们可以用一个图来直观地解释作用域链和变量名解析的过程：</p>
+<p><img src="http://puv83pspm.bkt.clouddn.com/post/1I45UlWRI/1.png" alt="Javascript 作用域链he变量名解析"></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F">基本的变量作用域</a></li>
+<li><a href="#%E5%9C%A8-javascript-%E4%B8%AD%E6%B2%A1%E6%9C%89%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%80%E8%AF%B4">在 Javascript 中，没有「块级作用域」一说</a></li>
+<li><a href="#%E5%8F%98%E9%87%8F%E7%9A%84%E7%9C%9F%E7%9B%B8">变量的真相</a></li>
+<li><a href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE">作用域链</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  <img src='http://puv83pspm.bkt.clouddn.com/avatar.jpg' style='width:40px;border-radius:20px' />
+<p style='margin:10px;'>Writen by Fan Bin</p>
+<p style='margin:10px;'><span style="background-color:#5aceb2;">&nbsp;</span><span style="background-color:#ff7250;">&nbsp;</span><span style="background-color:#fbbe3e;">&nbsp;</span><span style="background-color:#5bb9cd;">&nbsp;</span></p>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://blog.fanbin.dev/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

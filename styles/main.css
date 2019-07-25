@@ -978,6 +978,14 @@ td {
 .post-detail .post .post-content img {
     box-shadow: none;
 }
+/* 文章内代码字体调整 */
+.post-detail .post .post-content pre code{
+    font-size: 12px;
+}
+.post-detail .post .post-content p code, .post-detail .post .post-content li code {
+    font-size: .8em;
+    line-height: 1em;
+}
 /* 归档页年份颜色 */
 .archives-container .year {
     color: #ff7250;
