@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>数组和二分查找 | MQ TALK</title>
 <meta name="description" content="<del style='color:lightgrey'>MQ is short for 懵圈儿</del>" />
-<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1564051841595">
+<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1564052304372">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://blog.fanbin.dev/styles/main.css">
@@ -29,7 +29,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://blog.fanbin.dev">
-  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1564051841595" alt="">
+  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1564052304372" alt="">
   </a>
   <h1 class="site-title">
     MQ TALK
@@ -186,7 +186,7 @@
 <p>在一个有序的数组中查找元素，同样可以用这个方法。这种算法叫「二分查找」。</p>
 <h3 id="二分查找的步骤">二分查找的步骤</h3>
 <p>之所以叫二分查找，是因为，这个算法的步骤是，取数组中间的一个值，这样数组就会被分成两部分，根据中间的值与查找目标值的大小对比（也可以是字母顺序对比，或者其他方法对比，具体依数组内元素的排序方法而定），来选取中间值之前或之后的那部分，再进行相同的操作，直到找到目标值。</p>
-<p><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/4.png" alt=""></p>
+<p><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/4.2.png" alt=""></p>
 <p>使用二分查找算法的好处是，能用更快的速度，也就是更少的操作步骤找到目标值。例如在一个长度为 100 的有序数组中，使用线性查找算法，最多需要操作 100 步，而使用二分查找算法，最多只需要 7 步，二分查找算法的时间复杂度是 <code>O(log n)</code>。</p>
 <p>下图是随着元素数量的增加，两种复杂度的算法需要执行操作的步数对比。横轴是操作的元素数量，纵轴是算法需要执行的操作步数。可见，随着元素数量增加，两者的差距会越来越大。</p>
 <p><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/5.png" alt=""></p>
