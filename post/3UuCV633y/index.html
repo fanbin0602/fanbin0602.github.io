@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>数组和二分查找 | MQ TALK</title>
 <meta name="description" content="<del style='color:lightgrey'>MQ is short for 懵圈儿</del>" />
-<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1564025373531">
+<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1564051841595">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://blog.fanbin.dev/styles/main.css">
@@ -29,7 +29,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://blog.fanbin.dev">
-  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1564025373531" alt="">
+  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1564051841595" alt="">
   </a>
   <h1 class="site-title">
     MQ TALK
@@ -163,11 +163,11 @@
 <p>这个产品列表就是一个包含五个元素的数组，每个元素是一个产品名称。</p>
 <h3 id="数组在内存中是怎么保存的">数组在内存中是怎么保存的</h3>
 <p>计算机在内存中，会分配若干个连续的内存单元来存储数组。可以把内存看作超市门口的储物柜，储物柜的每个格子就是一个内存单元，有些格子放了东西，有些格子是空的。当计算机需要存储这个五个元素的数组时，就需要在这个储物柜中找出五个连续排列的空格子，把数组中的五个元素按顺序放进去。</p>
-<p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/1.png" alt=""></p>
+<p><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/1.png" alt=""></p>
 <h3 id="在数组中读取元素">在数组中读取元素</h3>
 <p>数组中元素顺序都是不变的，因此它们有一个天然的属性——索引，也可以理解为元素的序号，一般是从 0 开始，第一个元素的索引是 0，第二个元素的索引是 1，以此类推。计算机程序只需要知道存储数组的内存地址，也就是数组中第一个元素的内存地址，就可以根据每个元素的索引，计算出任何元素的内存地址，从而快速找到它们。</p>
 <p>如下图：</p>
-<p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/2.png" alt=""></p>
+<p><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/2.png" alt=""></p>
 <p>灰色的格子表示已经被占用的内存（想象这是一个储物柜，有一些储物格子已经放了东西），我们要存储的数组元素被放在五个连续的原先空着的格子里。</p>
 <p>内存的每个格子都有一个地址，为了描述简单，我们假设这些格子的内存地址分别是1000、1001、1002……，因此我们保存的五个数组元素的内存地址就是1010、1011、1012、1012、1014。数组本身会记有第一个格子的内存地址，这样计算机可以一步就访问到任意一个内存地址的数据。因此，数组中任意一个元素的内存地址，就是第一个格子的内存地址，加上元素的索引。比如，计算机要访问第三个元素“iPhone”，就可以直接访问地址是1012（第一个元素的地址1010，加第三个元素的下标2）的内存格子，得到字符串“iPhone”。</p>
 <p>因此，读取数组中一个元素，只需要一步操作，记为 <code>O(1)</code>。</p>
@@ -175,7 +175,7 @@
 <h3 id="在数组中查找元素">在数组中查找元素</h3>
 <p>查找操作与读取操作正好相反，读取操作是已知元素的索引，去内存中获取它的值。而查找操作是给定一个值，检查数组中是否包含这个值，以及它在数组中的什么位置。</p>
 <p>查找元素最直接的方式，就是按顺序轮流读取数组中的每个元素，看是不是我们要找的那一个，当找到的时候，就知道了它在数组中的位置，也就是元素的索引下标，如果数组中所有的元素都不是我们要找的，那它就不在这个数组中。</p>
-<p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/3.png" alt=""></p>
+<p><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/3.png" alt=""></p>
 <p>以上就是一个数组中查找元素的<strong>算法</strong>，它的名字叫线性查找。如果我们要分析这个算法的执行速度，就需要知道这个算法要执行多少步操作。在最坏的情况下，比如，我们要找的元素在数组的末尾，或者不在数组中，那么，在一个长度为 N 的数组中查找元素需要执行 N 步操作。复杂度记为<code>O(n)</code>。</p>
 <p>从上面的描述中可以看出，线性查找算法显然是一个很笨的方法，那有没有聪明一点的方法呢？</p>
 <h2 id="二分查找">二分查找</h2>
@@ -186,13 +186,13 @@
 <p>在一个有序的数组中查找元素，同样可以用这个方法。这种算法叫「二分查找」。</p>
 <h3 id="二分查找的步骤">二分查找的步骤</h3>
 <p>之所以叫二分查找，是因为，这个算法的步骤是，取数组中间的一个值，这样数组就会被分成两部分，根据中间的值与查找目标值的大小对比（也可以是字母顺序对比，或者其他方法对比，具体依数组内元素的排序方法而定），来选取中间值之前或之后的那部分，再进行相同的操作，直到找到目标值。</p>
-<p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/4.png" alt=""></p>
+<p><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/4.png" alt=""></p>
 <p>使用二分查找算法的好处是，能用更快的速度，也就是更少的操作步骤找到目标值。例如在一个长度为 100 的有序数组中，使用线性查找算法，最多需要操作 100 步，而使用二分查找算法，最多只需要 7 步，二分查找算法的时间复杂度是 <code>O(log n)</code>。</p>
 <p>下图是随着元素数量的增加，两种复杂度的算法需要执行操作的步数对比。横轴是操作的元素数量，纵轴是算法需要执行的操作步数。可见，随着元素数量增加，两者的差距会越来越大。</p>
-<p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/5.png" alt=""></p>
+<p><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/5.png" alt=""></p>
 <h3 id="算法复杂度的表示">算法复杂度的表示</h3>
 <p>关于算法时间复杂度，除了上面介绍的两种，常见的还有 <code>O(n)</code>、<code>O(n*log n)</code>、<code>O(n^2)</code>、<code>O(n!)</code>等，算法的复杂度本质上指的是，随着操作元素的增加，算法需要执行的步数的增速。如果一个数组中只有一个元素，那线性查找和二分查找的执行步骤是一样多的。但是随着元素数量的增加，线性查找的操作步数呈线性增长，而二分查找的操作步数呈对数增长，两者差距很大。</p>
-<p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/6.png" alt=""></p>
+<p><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/6.png" alt=""></p>
 <h2 id="总结和预告">总结和预告</h2>
 <p>这篇介绍了最基本的数据结构——数组，以及最简单却有趣的算法——二分查找，顺便了解了使用大O记法表示算法的时间复杂度。总结如下：</p>
 <ol>
@@ -248,7 +248,7 @@
         
 
         <div class="site-footer">
-  <img src='http://puv83pspm.bkt.clouddn.com/avatar.jpg' style='width:40px;border-radius:20px' />
+  <img src='http://blog-fanbin-ink.img.fanbin.ink/avatar.jpg' style='width:40px;border-radius:20px' />
 <p style='margin:10px;'>Writen by Fan Bin</p>
 <p style='margin:10px;'><span style="background-color:#5aceb2;">&nbsp;</span><span style="background-color:#ff7250;">&nbsp;</span><span style="background-color:#fbbe3e;">&nbsp;</span><span style="background-color:#5bb9cd;">&nbsp;</span></p>
 Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
