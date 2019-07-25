@@ -1,15 +1,26 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>数组和二分查找 | MQ TALK</title>
-<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1563978945019">
+<meta name="description" content="<del style='color:lightgrey'>MQ is short for 懵圈儿</del>" />
+<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1564017422575">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://blog.fanbin.dev/styles/main.css">
 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50640413-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-50640413-3');
+</script>
 
 
   </head>
@@ -18,7 +29,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://blog.fanbin.dev">
-  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1563978945019" alt="">
+  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1564017422575" alt="">
   </a>
   <h1 class="site-title">
     MQ TALK
@@ -92,9 +103,17 @@
   <div class="social-container">
     
       
+        <a href="https://github.com/fanbin0602" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
     
       
     
+      
+        <a href="https://weibo.com/imfxx" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
       
     
       
@@ -104,71 +123,75 @@
   </div>
 </div>
 
-      
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
               数组和二分查找
             </h2>
             <div class="post-info">
-              <time class="post-time">
-                · 2019-07-24 ·
-              </time>
+              <span>
+                2019-07-24
+              </span>
+              <span>
+                1 min read
+              </span>
               
-                <a href="https://blog.fanbin.dev/tag/7cidzEWgG" class="post-tags">
+                <a href="https://blog.fanbin.dev/tag/7cidzEWgG" class="post-tag">
                   # 数据结构
                 </a>
               
-                <a href="https://blog.fanbin.dev/tag/4sRrXhdxD0" class="post-tags">
+                <a href="https://blog.fanbin.dev/tag/4sRrXhdxD0" class="post-tag">
                   # 算法
                 </a>
               
-                <a href="https://blog.fanbin.dev/tag/programming" class="post-tags">
+                <a href="https://blog.fanbin.dev/tag/programming" class="post-tag">
                   # 编程
                 </a>
               
             </div>
             
-            <div class="post-content">
-              <p>这篇总结一下数组和二分查找算法。数组是计算机科学中最基础的数据结构，二分查找算法是一种最简单却有趣的算法。它们是走进算法世界最先接触的东西。</p>
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>这篇总结一下数组和二分查找算法。数组是计算机科学中最基础的数据结构，二分查找算法是一种最简单却有趣的算法。它们是走进算法世界最先接触的东西。</p>
 <!-- more -->
 <h2 id="数组">数组</h2>
 <h3 id="数组是什么">数组是什么</h3>
-<p>数据结构是计算机程序组织和存储数据的方式，数组是计算机科学中最基本的数据结构之一。它通常是由相同类型的元素的集合组成，类似于一个列表，比如待办清单、产品目录等。</p>
+<p>数据结构是计算机程序组织和存储数据的方式，数组是计算机科学中最基本的数据结构之一。它通常是由相同类型的元素组成，类似于一个列表，比如待办清单、产品目录等。</p>
 <p>比如：</p>
 <pre><code class="language-python">products = [&quot;Mac&quot;, &quot;iPad&quot;, &quot;iPhone&quot;, &quot;Watch&quot;, &quot;iPod&quot;]
 </code></pre>
 <p>这个产品列表就是一个包含五个元素的数组，每个元素是一个产品名称。</p>
 <h3 id="数组在内存中是怎么保存的">数组在内存中是怎么保存的</h3>
-<p>计算机在内存中，会分配一块连续的内存来存储数组。可以把内存看作超市门口的储物柜，储物柜的每个格子就是一个内存单元，有些格子放了东西，有些格子是空的。当计算机需要存储这个五个元素的数组时，就需要在这个储物柜中找出五个连续排列的空格子，把数组中的五个元素按顺序放进去。</p>
+<p>计算机在内存中，会分配若干个连续的内存单元来存储数组。可以把内存看作超市门口的储物柜，储物柜的每个格子就是一个内存单元，有些格子放了东西，有些格子是空的。当计算机需要存储这个五个元素的数组时，就需要在这个储物柜中找出五个连续排列的空格子，把数组中的五个元素按顺序放进去。</p>
 <p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/1.png" alt=""></p>
 <h3 id="在数组中读取元素">在数组中读取元素</h3>
-<p>数组中每个元素的顺序都是不变的，因此它们有一个天然的属性——索引，一般是从 0 开始，第一个元素的索引是 0，第二个元素的索引是 1，计算机程序只要知道存储数组的内存地址，也就是数组中第一个元素的内存地址，就可以根据每个元素的索引，计算出任何元素的内存地址，快速找到它们。</p>
+<p>数组中元素顺序都是不变的，因此它们有一个天然的属性——索引，也可以理解为元素的序号，一般是从 0 开始，第一个元素的索引是 0，第二个元素的索引是 1，以此类推。计算机程序只需要知道存储数组的内存地址，也就是数组中第一个元素的内存地址，就可以根据每个元素的索引，计算出任何元素的内存地址，从而快速找到它们。</p>
 <p>如下图：</p>
 <p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/2.png" alt=""></p>
-<p>灰色的格子表示已经被占用的内存（想象这是一个储物柜，有一些储物格子已经放了东西），我们要存储的数组元素被放在五个连续的格子里。</p>
-<p>内存的每个格子都有一个地址，为了描述简单，我们假设这些格子的内存地址分别是1000、1001、1002……，因此我们保存的五个数组元素的内存地址就是1010、1011、1012、1012、1014。数组本身会记有第一个格子的内存地址，而计算机可以一步就访问到任意一个内存地址的数据。因此，数组中任意一个元素的内存地址，就是第一个格子的内存地址，加上元素的索引。比如，计算机要访问第三个元素“iPhone”，就可以直接访问地址是1012（第一个元素的地址1010，加第三个元素的下标2）的内存格子，得到字符串“iPhone”。</p>
+<p>灰色的格子表示已经被占用的内存（想象这是一个储物柜，有一些储物格子已经放了东西），我们要存储的数组元素被放在五个连续的原先空着的格子里。</p>
+<p>内存的每个格子都有一个地址，为了描述简单，我们假设这些格子的内存地址分别是1000、1001、1002……，因此我们保存的五个数组元素的内存地址就是1010、1011、1012、1012、1014。数组本身会记有第一个格子的内存地址，这样计算机可以一步就访问到任意一个内存地址的数据。因此，数组中任意一个元素的内存地址，就是第一个格子的内存地址，加上元素的索引。比如，计算机要访问第三个元素“iPhone”，就可以直接访问地址是1012（第一个元素的地址1010，加第三个元素的下标2）的内存格子，得到字符串“iPhone”。</p>
 <p>因此，读取数组中一个元素，只需要一步操作，记为 <code>O(1)</code>。</p>
-<p>这种表示方法，称为大O记法，用来表示操作的速度（也称复杂度）。操作的速度并不按时间计算，而是按操作步数计算。因为衡量操作时间，需要考虑硬件条件，衡量步数才是分析速度的关键。</p>
+<p>这种表示方法，称为大O记法，用来表示算法执行的速度（也称复杂度）。这个速度并不按时间计算，而是按操作步数计算。衡量操作时间需要考虑硬件条件，衡量步数才是分析速度的关键。</p>
 <h3 id="在数组中查找元素">在数组中查找元素</h3>
-<p>查找操作与读取操作正好相反，读取操作是已知元素的位置，去内存中获取它的值。而查找操作是给定一个值，检查数组中是否包含这个值，以及它在数组中的什么位置。</p>
+<p>查找操作与读取操作正好相反，读取操作是已知元素的索引，去内存中获取它的值。而查找操作是给定一个值，检查数组中是否包含这个值，以及它在数组中的什么位置。</p>
 <p>查找元素最直接的方式，就是按顺序轮流读取数组中的每个元素，看是不是我们要找的那一个，当找到的时候，就知道了它在数组中的位置，也就是元素的索引下标，如果数组中所有的元素都不是我们要找的，那它就不在这个数组中。</p>
 <p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/3.png" alt=""></p>
-<p>以上就是一个数组中查找元素的<strong>算法</strong>，它的名字叫线性查找。如果我们要分析这个算法的执行速度，就需要知道这个算法要执行多少步操作。如果是最坏的情况，比如，我们要找的元素在数组的末尾，或者不在数组中，那么，在一个长度为 N 的数组中查找元素需要执行 N 步操作。</p>
+<p>以上就是一个数组中查找元素的<strong>算法</strong>，它的名字叫线性查找。如果我们要分析这个算法的执行速度，就需要知道这个算法要执行多少步操作。在最坏的情况下，比如，我们要找的元素在数组的末尾，或者不在数组中，那么，在一个长度为 N 的数组中查找元素需要执行 N 步操作。复杂度记为<code>O(n)</code>。</p>
 <p>从上面的描述中可以看出，线性查找算法显然是一个很笨的方法，那有没有聪明一点的方法呢？</p>
 <h2 id="二分查找">二分查找</h2>
-<h3 id="什么事二分查找">什么事二分查找</h3>
-<p>之前说过，<strong>数据结构服务于算法，算法运行与数据结构之上</strong>，为了对数组执行快速查找元素的算法，需要引入有序数组——元素在数组中始终保持有序。比如，从大到小的一组数字，或按字母顺序排列的一组名称等。</p>
-<p>有了这样的数据结构，我们就有更聪明的查找算法。比如，你要在一本书里找一篇文章，从目录中得知这篇文章在第261页，你怎么找到第261页呢？一本书就是一个数组，书里的每一页是数组中的一个元素，我们要找到值为261的元素，按照之前介绍的线性查找的办法，我们需要从第1页开始找，一直找到261页——你一定不会这么做的。</p>
-<p>我相信你一定是这么做的：因为书籍中每一页的页码是按顺序排列的，你会先随便翻到一页，如果这一页的页码比 261 大，你就会在这页之前的部分再随便翻一页，反之，在它之后随意翻一页。以此类推，知道找到 261 页。</p>
-<p>在一个有序的数组中查找元素，同样可以用这样的方法。这个算法叫二分查找。</p>
+<h3 id="什么是二分查找">什么是二分查找</h3>
+<p>之前说过，<strong>数据结构服务于算法，算法运行与数据结构之上</strong>，为了对数组执行快速查找元素的算法，需要引入新的数据结构有序数组——元素在数组中始终保持有序。比如，从大到小的一组数字，或按字母顺序排列的一组名称等。</p>
+<p>有了这样的数据结构，我们就有更聪明的查找算法。设想，你要在一本书里找一篇文章，从目录中得知这篇文章在第261页，你怎么找到第261页呢？一本书就是一个数组，书里的每一页是数组中的一个元素，我们要找到值为261的元素，按照之前介绍的线性查找的办法，我们需要从第1页开始找，一直找到261页——你一定不会这么做。</p>
+<p>以下才是大多数人的做法：因为书籍中每一页的页码是按顺序排列的，因此它是一个有序数组。你会先从中间部分随便翻到一页，如果这一页的页码比 261 大，你就会在这页之前的部分再随便翻一页，反之，在它之后随意翻一页。以此类推，直到找到第 261 页。</p>
+<p>在一个有序的数组中查找元素，同样可以用这个方法。这种算法叫「二分查找」。</p>
 <h3 id="二分查找的步骤">二分查找的步骤</h3>
-<p>之所以叫二分查找，是因为，这个算法的步骤是，取数组中间的一个值，这样数组就会被分成两部分，根据中间的值与查找目标值的大小对比（也可以是字母顺序对比，或者其他方法对比，具体依数组内元素的排序方法而定），来选取中间值之前或之后的那部分，在进行相同的操作，直到找到目标值。</p>
+<p>之所以叫二分查找，是因为，这个算法的步骤是，取数组中间的一个值，这样数组就会被分成两部分，根据中间的值与查找目标值的大小对比（也可以是字母顺序对比，或者其他方法对比，具体依数组内元素的排序方法而定），来选取中间值之前或之后的那部分，再进行相同的操作，直到找到目标值。</p>
 <p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/4.png" alt=""></p>
-<p>使用二分查找算法的好处是，能用更快的速度，也就是更少的操作步骤找到目标值。比如，在一个长度为 100 的有序数组中，使用线性查找算法，最多需要操作 100 步，而使用二分查找算法，最多只需要 7 步，二分查找算法的时间复杂度是 <code>O(log n)</code>。</p>
+<p>使用二分查找算法的好处是，能用更快的速度，也就是更少的操作步骤找到目标值。例如在一个长度为 100 的有序数组中，使用线性查找算法，最多需要操作 100 步，而使用二分查找算法，最多只需要 7 步，二分查找算法的时间复杂度是 <code>O(log n)</code>。</p>
+<p>下图是随着元素数量的增加，两种复杂度的算法需要执行操作的步数对比。横轴是操作的元素数量，纵轴是算法需要执行的操作步数。可见，随着元素数量增加，两者的差距会越来越大。</p>
 <p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/5.png" alt=""></p>
 <h3 id="算法复杂度的表示">算法复杂度的表示</h3>
-<p>关于算法时间复杂度的表示，除了上面介绍的两种，常见的还有 <code>O(n)</code>、<code>O(n*log n)</code>、<code>O(n^2)</code>、<code>O(n!)</code>等，算法的复杂度本质上指的是，随着操作元素的增加，算法需要执行的步数的增速。比如，如果一个数组中只有一个元素，那线性查找和二分查找的执行步骤是一样多的。但是随着元素数量的增加，线性查找的操作步数呈线性增长，而二分查找的操作步数呈对数增长，两者差距很大。</p>
+<p>关于算法时间复杂度，除了上面介绍的两种，常见的还有 <code>O(n)</code>、<code>O(n*log n)</code>、<code>O(n^2)</code>、<code>O(n!)</code>等，算法的复杂度本质上指的是，随着操作元素的增加，算法需要执行的步数的增速。如果一个数组中只有一个元素，那线性查找和二分查找的执行步骤是一样多的。但是随着元素数量的增加，线性查找的操作步数呈线性增长，而二分查找的操作步数呈对数增长，两者差距很大。</p>
 <p><img src="http://puv83pspm.bkt.clouddn.com/post/3UuCV633y/6.png" alt=""></p>
 <h2 id="总结和预告">总结和预告</h2>
 <p>这篇介绍了最基本的数据结构——数组，以及最简单却有趣的算法——二分查找，顺便了解了使用大O记法表示算法的时间复杂度。总结如下：</p>
@@ -181,10 +204,36 @@
 </ol>
 <p>后面会分析数组的另外两个操作：插入元素和删除元素，并且会引入新的数据结构——链表。</p>
 
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%95%B0%E7%BB%84">数组</a>
+<ul>
+<li><a href="#%E6%95%B0%E7%BB%84%E6%98%AF%E4%BB%80%E4%B9%88">数组是什么</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%9C%A8%E5%86%85%E5%AD%98%E4%B8%AD%E6%98%AF%E6%80%8E%E4%B9%88%E4%BF%9D%E5%AD%98%E7%9A%84">数组在内存中是怎么保存的</a></li>
+<li><a href="#%E5%9C%A8%E6%95%B0%E7%BB%84%E4%B8%AD%E8%AF%BB%E5%8F%96%E5%85%83%E7%B4%A0">在数组中读取元素</a></li>
+<li><a href="#%E5%9C%A8%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0">在数组中查找元素</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">二分查找</a>
+<ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE">什么是二分查找</a></li>
+<li><a href="#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E7%9A%84%E6%AD%A5%E9%AA%A4">二分查找的步骤</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E8%A1%A8%E7%A4%BA">算法复杂度的表示</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%BB%E7%BB%93%E5%92%8C%E9%A2%84%E5%91%8A">总结和预告</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
             </div>
           </article>
         </div>
-    
+
         
           <div class="next-post">
             <div class="next">下一篇</div>
@@ -193,20 +242,59 @@
                 清醒周刊 #190719
               </h3>
             </a>
-          </div>  
+          </div>
         
 
         
-    
+
         <div class="site-footer">
   <img src='http://puv83pspm.bkt.clouddn.com/avatar.jpg' style='width:40px;border-radius:20px' />
-<p style='margin:10px'>Writen by Fan Bin</p>
-<p style='margin:10px'>Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></p>
-<p><span style="background-color:#5aceb2;">&nbsp;</span><span style="background-color:#ff7250;">&nbsp;</span><span style="background-color:#fbbe3e;">&nbsp;</span><span style="background-color:#5bb9cd;">&nbsp;</span></p>
+<p style='margin:10px;'>Writen by Fan Bin</p>
+<p style='margin:10px;'><span style="background-color:#5aceb2;">&nbsp;</span><span style="background-color:#ff7250;">&nbsp;</span><span style="background-color:#fbbe3e;">&nbsp;</span><span style="background-color:#5bb9cd;">&nbsp;</span></p>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://blog.fanbin.dev/atom.xml" target="_blank">RSS</a>
 </div>
 
 <script>
   hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
 </script>
 
       </div>
