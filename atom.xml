@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.fanbin.dev</id>
     <title>MQ TALK</title>
-    <updated>2019-07-25T10:58:27.791Z</updated>
+    <updated>2019-07-26T07:05:51.968Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.fanbin.dev"/>
     <link rel="self" href="https://blog.fanbin.dev/atom.xml"/>
@@ -10,6 +10,65 @@
     <logo>https://blog.fanbin.dev/images/avatar.png</logo>
     <icon>https://blog.fanbin.dev/favicon.ico</icon>
     <rights>All rights reserved 2019, MQ TALK</rights>
+    <entry>
+        <title type="html"><![CDATA[清醒周刊 #190726]]></title>
+        <id>https://blog.fanbin.dev/post/VjD-Y7Tw_</id>
+        <link href="https://blog.fanbin.dev/post/VjD-Y7Tw_">
+        </link>
+        <updated>2019-07-26T06:48:45.000Z</updated>
+        <summary type="html"><![CDATA[<p>W3C 「弹幕规范」工作草案；吴军采访，关于 5G、IoT 和互联网行业发展；腾讯 QMUI 团队发布 iOS UI 调试工具；综艺节目怎样获得音乐版权 等。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>W3C 「弹幕规范」工作草案；吴军采访，关于 5G、IoT 和互联网行业发展；腾讯 QMUI 团队发布 iOS UI 调试工具；综艺节目怎样获得音乐版权 等。</p>
+<!-- more -->
+<h4 id="w3c-的弹幕规范工作草案">🔗[W3C 的「弹幕规范」工作草案]</h4>
+<p>W3C 是指万维网联盟，创建于1994年，是Web技术领域最具权威和影响力的国际中立性技术标准机构。平时我们知道的 Web 标准都是 W3C 制定的，这也就是为什么世界上大部分网页与大部分浏览器都是兼容的。近期 W3C 的技术标准文档里出现了一篇「弹幕规范」。W3C 的技术标准从开始到成为业界公认标准总共分为四个阶段，分别是：</p>
+<ul>
+<li>工作草案（WD）</li>
+<li>候选推荐标准（CR）</li>
+<li>提案推荐标准（PR）</li>
+<li>W3C 推荐标准（REC）</li>
+</ul>
+<p>目前，这份弹幕规范处于最初的工作草案阶段。</p>
+<p>微博上的开发者们表示：</p>
+<blockquote>
+<p>哈哈哈哈哈哈</p>
+</blockquote>
+<blockquote>
+<p>233</p>
+</blockquote>
+<blockquote>
+<p>这也算是重大互联网标准贡献了</p>
+</blockquote>
+<h4 id="吴军的采访视频">🔗[ 吴军的采访视频 ]</h4>
+<p>前几天，吴军的一段采访视频在互联网上广泛传播。大家的讨论热点集中在了他对大型互联网公司的评价上——「谷歌平庸，苹果受困，百度落伍，腾讯没有 To B 的基因」。</p>
+<p>但我看完视频发现，这些并不是他聊天的重点。他对 5G 和 IoT 的观点才是这段采访视频的主要内容。如果没时间看视频，我把他的观点总结一下：</p>
+<ol>
+<li>在第一代互联网到第二代互联网转变的时候，有一些公司死掉了，有一些公司落伍了，腾讯和阿里幸存了下来，还有大量的新公司诞生了。到第三代互联网诞生的过程中，也会发生同样的事情。</li>
+<li>第一代互联网到第二代互联网指的是传统互联网和移动互联网，也可以指机器互联和人互联，第三代互联网指的是万物互联，也就是 IoT。</li>
+<li>在中国，还没有公司能确定在第三代互联网时代做大。格力卖出了大量的家电，但是没有往智能化的方向转变；米家的设备做的很好，但是服务方面还有路要走。在国外，Google Home 和 Amazon Alex 已经做得不错，比如 Alex 已经与大众汽车合作，做语音交互。</li>
+<li>在前两代互联网的转变中，芯片由 Intel 转变到了 ARM，操作系统由 Windows 转变到了 Android，这是因为后者在信息处理效率上出现了数量级上的提升，这个规律在下一代互联网出现的过程中，同样适用。</li>
+<li>科学技术是两件事，科学是把钱变成知识，技术是把知识变成钱，中国更擅长后者。</li>
+</ol>
+<p>我比较认同他的观点。有一句话说「历史从不重复，但总是押韵」。我们可以从过去互联网行业的发展过程中，预测未来的发展。5G 的到来会为 IoT 提供比现在好得多的基础设施条件，预计十年内，IoT 会在中国发展地极度成熟。</p>
+<h4 id="qmui-team-发布免费的-ios-ui-调试工具">🔗[ QMUI Team 发布免费的 iOS UI 调试工具 ]</h4>
+<p>腾讯的 QMUI 团队，最近发布了他们在内部使用的 iOS UI 调试工具 Lookin，开源免费。与著名的 macOS 平台的界面调试工具 Reveal 类似。一下是它的官方介绍：</p>
+<blockquote>
+<p>Lookin 可以查看与修改 iOS App 里的 UI 对象，类似于 Xcode 自带的 UI Inspector 工具，或另一款叫做 Reveal 的软件。<br>
+但借助于“控制台”和“方法监听”功能，Lookin 还可以进行 UI 之外的调试。<br>
+此外，虽然 Lookin 主体是一款 macOS 程序，它亦可嵌入你的 iOS App 而单独运行在 iPhone 或 iPad 上。<br>
+最后，Lookin 完全免费。</p>
+</blockquote>
+<p>由于是非营利性组织，所以该软件完全免费，不含任何内购或广告，亦无需注册任何账户</p>
+<h4 id="要在乐队的夏天翻唱一首歌怎么处理版权才能不侵权">🔗[ 要在《乐队的夏天》翻唱一首歌，怎么处理版权才能不侵权？ ]</h4>
+<p>最近，米未传媒出品的综艺节目《乐队的夏天》大火，该节目的又一场乐队之间的 1V1 改编战，你注意到了，翻唱的歌曲在视频画面上有非常细致而专业的版权信息。</p>
+<p>在湖南台综艺节目《歌手》上一季的比赛中，由于版权的原因，很多歌手的表演在电视上播出了，而在网络平台被剪掉了。</p>
+<p>之前也有一些综艺节目，因为音乐版权问题下架，甚至打官司。</p>
+<p>如果要在综艺节目翻唱歌曲怎样获得版权呢？如果你对这个问题感兴趣，或者对音乐版权其他方面的问题感兴趣，都能在这篇文章里找到答案。</p>
+<h4 id="钢琴师分享并演示了他认为的10支最难的曲目片段">🔗[ 钢琴师分享并演示了他认为的10支最难的曲目片段 ]</h4>
+<p>最后分享一个视频，是一个钢琴师弹奏他认为的10支最难曲目的演奏片段。</p>
+<p>看完一定让你吃惊。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[数组和二分查找]]></title>
         <id>https://blog.fanbin.dev/post/3UuCV633y</id>
