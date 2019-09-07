@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.fanbin.dev</id>
     <title>MQ TALK</title>
-    <updated>2019-08-06T09:29:52.124Z</updated>
+    <updated>2019-09-07T05:43:54.301Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.fanbin.dev"/>
     <link rel="self" href="https://blog.fanbin.dev/atom.xml"/>
@@ -11,34 +11,123 @@
     <icon>https://blog.fanbin.dev/favicon.ico</icon>
     <rights>All rights reserved 2019, MQ TALK</rights>
     <entry>
-        <title type="html"><![CDATA[在新 iPhone 发布之前聊聊新 iPhone]]></title>
-        <id>https://blog.fanbin.dev/post/xTL6rW8XL</id>
-        <link href="https://blog.fanbin.dev/post/xTL6rW8XL">
+        <title type="html"><![CDATA[MySQL 主从复制]]></title>
+        <id>https://blog.fanbin.dev/post/Qg_Mg199T</id>
+        <link href="https://blog.fanbin.dev/post/Qg_Mg199T">
         </link>
-        <updated>2019-08-01T08:11:02.000Z</updated>
-        <summary type="html"><![CDATA[<p>又到了若干年一度换手机的时候。</p>
-<p>我换手机的节奏是，买预算以内最好的，然后用到它不在满足我的最低需求为止。</p>
+        <updated>2019-09-07T01:31:11.000Z</updated>
+        <summary type="html"><![CDATA[<p>本文演示一个简单的 MySQL 主从复制的示例。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>又到了若干年一度换手机的时候。</p>
-<p>我换手机的节奏是，买预算以内最好的，然后用到它不在满足我的最低需求为止。</p>
+        <content type="html"><![CDATA[<p>本文演示一个简单的 MySQL 主从复制的示例。</p>
 <!-- more -->
-<h2 id="现在的手机">现在的手机</h2>
-<p>目前我手上的主力手机是 iPhone 6s，已经陪伴了我将近四年的时间。我的主力机只用 iPhone，在买这台 6s 的时候，对自己之后换机的计划是每两年买一台最新的 s 结尾的 iPhone，比如，6s 之后用 7s，再之后用 8s，但是没想到苹果改变了产品更新的节奏，在 iPhone 7 之后的下一年，发布了 iPhone 8 和 iPhone X，8 太普通，X 太贵，手上的 6s 用得好好的，于是没有按照原计划换手机。</p>
-<p>现在，我手里的 iPhone 6s 已经满足不了我的使用需求了。电池不行了，用着也卡顿了许多，因此打算在下个月新手机出来之后换一部。目前的想法是，如果新出手机特别好，就买个新出的手机，如果一般般，就买个去年发布的 iPhone Xs 或 Xs Max。对于追新，前些年去试试这样的，但是最近几年，我感觉任何手机的性能都足够日常使用了，买自己喜欢的就好。</p>
-<h2 id="对新-iphone-的期待">对新 iPhone 的期待</h2>
-<p>给予目前最新的 iPhone Xs，以及今年市场上其他品牌的旗舰手机，我对新 iPhone 的期待，有以下几个：</p>
+<h2 id="0-说明">0. 说明</h2>
 <ol>
-<li>屏幕。目前我还没使用过 OLED 屏幕的 iPhone，这个应该没跑。不管买不买最新的手机，我会选择 OLED 屏幕。对于屏幕的形状，对于我来说，我宁愿使用屏占比低的巨型屏幕，也不想使用有刘海的全面屏，但目前来看，我只能接受了，因为要想买一个新一点，足够我再使用三四年的手机，iPhone 8 或者是钱的手机，有些达不到我的要求了。</li>
-<li>Touch ID 和 Face ID。我其实是喜欢指纹锁的，因为指纹解锁可以盲操作，在把手机从口袋里掏出来的过程中，就解锁了，行云流水。虽然苹果的 Face ID 安全性不输 Touch ID，但用起来真的有些尴尬，想象一下手机平放在桌子上，而你想解锁手机时的样子。</li>
-<li>摄像头。对于网上流出的（基本确认了）类似浴霸样子的摄像头，可能最后会成为我不买最新款 iPhone 的一个理由。我觉得苹果至少应该给用户另一个选择，并不是每个用户都那么在意拍照的质量，以至于使用一个背面如此丑陋的手机。很多用户会使用相机拍照，而不是手机；很多用户摄像头最多的使用场景就是扫二维码。摄像头的数量真的那么重要吗？</li>
-<li>整体外观。我觉得今年的 iPhone 大体上还是之前的整体外观，会多一两种颜色或者一些小的改动。手机的外观没那么重要，毕竟没得选。</li>
-<li>芯片。我觉得芯片这方面，苹果依然是宇宙最强，没什么可质疑的，用就是了。</li>
-<li>其他。其他的没那么重要了。</li>
+<li>本示例为一主一从的架构。</li>
+<li>使用 Docker 启动两个 MySQL 容器来做演示，确保已经安装了 Docker，并且懂得 Docker 的基本用法。</li>
 </ol>
-<h2 id="对苹果的想法">对苹果的想法</h2>
-<p>现在，苹果已经完全变成了库克的苹果，乔布斯时代的感觉已经慢慢没有了。我认为，这里面最主要的特征不是大多数人所认为的「创新乏力」，而是极简主义的消退。</p>
-<p>从库克壮观苹果以来，Mac、iPad、iPhone 的产品线都变的比以前复杂，苹果官方也推出了各种各样的设备配件，软硬件功能特性上也越来越复杂，现在的 iOS 再也不是当年那个三岁小孩拿起来就可以使用的 iOS 了。</p>
-<p>最近又有新闻说新 iPhone 可能支持手写笔，我对此感到很疑惑，如果手机上的一个操作需要手写笔来完成，那一定是交互设计的缺陷，而不是硬件功能的不足，即使真的有合理的使用场景，但真的要把产品做成这样吗？</p>
+<h2 id="1-创建并启动容器">1. 创建并启动容器</h2>
+<p>主库：</p>
+<pre><code class="language-bash">docker run --name=mysql-dn-m  --env=MYSQL_ROOT_PASSWORD=admin123 -p 3316:3306 -p 33160:33060  -d mysql:latest
+</code></pre>
+<p>从库</p>
+<pre><code class="language-bash">docker run --name=mysql-dn-s --env=MYSQL_ROOT_PASSWORD=admin123 -p 3326:3306 -p 33260:33060 --link mysql-dn-m:master -d mysql:latest
+</code></pre>
+<p>以上操作的说明：</p>
+<ol>
+<li>启动两个 MySQL 容器（镜像的具体信息可以在<a href="https://hub.docker.com/_/mysql">这里</a>查看），主库容器命名为 <code>mysql-dn-m</code>，从库容器命名为 <code>mysql-dn-s</code>。</li>
+<li>设置 <code>root</code> 用户的密码为 <code>admin123</code>（只作为演示实用）。</li>
+<li>映射相应的端口号。</li>
+<li>在从库容器创建时，使用 <code>--link mysql-dn-m:master</code> 创建从库容器到主库容器的网络连接，这样可以在从库内以 <code>master</code> 为主机名，访问主库。</li>
+</ol>
+<p>使用 <code>docker ps</code> 命令，查看当前正在运行的容器，保证以上操作正常。</p>
+<h2 id="1-主库配置">1. 主库配置</h2>
+<p>使用 <code>docker exec -it mysql-dn-m /bin/bash</code> 命令进入主库容器的命令行。编辑 <code>/etc/mysql/my.cnf</code> 配置文件。</p>
+<p>首先，在 <code>[mysqld]</code> 的下方，添加一下配置（# 符号后面的内容为注释）：</p>
+<pre><code>log-bin=mysql-bin # 开启二进制日志
+server-id=1 # 设置唯一的 server-id
+</code></pre>
+<p>然后在配置文件的最后添加如下内容：</p>
+<pre><code>binlog-ignore-db=mysql
+binlog-ignore-db=information_schema
+binlog-ignore-db=performance_schema
+binlog-ignore-db=sys
+</code></pre>
+<p>这样可以忽略复制 MySQL 内置的四个数据库。</p>
+<p>如果需要自定义复制的库，可以用 <code>binlog-do-db</code> 参数来配置，不配置的话，默认复制所有库。</p>
+<p>操作完以后重启主库容器。</p>
+<p>可以连接主库，执行一下 SQL 语句，查看日志的开启状态。</p>
+<pre><code class="language-sql">show variables like '%log_bin%';
+</code></pre>
+<p>如果 <code>log_bin</code> 的值是 <code>ON</code>，则表示没有问题。</p>
+<h2 id="2-从库配置">2. 从库配置</h2>
+<p>使用与主库同样的方法，编辑从库容器中的 <code>/etc/mysql/my.cnf</code> 配置文件。从库的配置只需要在 <code>[mysqld]</code> 的下方添加一行即可：</p>
+<pre><code>server-id=2 # 设置唯一的 server-id
+</code></pre>
+<p>操作完以后重启从库容器。</p>
+<h2 id="3-在主库创建用与数据同步的用户账号">3. 在主库创建用与数据同步的用户账号</h2>
+<p>进入主库。</p>
+<p>执行如下命令创建用户，用户名、主机、密码按需设置，然后记住：</p>
+<pre><code class="language-sql">CREATE USER 'repl'@'%' IDENTIFIED BY 'slavepass';
+</code></pre>
+<p>然后，为刚刚创建的用户授权：</p>
+<pre><code class="language-sql">GRANT REPLICATION SLAVE ON *.* TO 'repl'@'%'
+</code></pre>
+<p>最后刷新权限：</p>
+<pre><code class="language-sql">flush privileges;
+</code></pre>
+<p>完成后，可以使用下面的查询语句来验证这一步的操作：</p>
+<pre><code class="language-sql">show grants for 'repl';
+</code></pre>
+<h2 id="4-配置主从复制">4. 配置主从复制</h2>
+<p>先连接主库，执行一下查询操作：</p>
+<pre><code class="language-sql">show master status\G;
+</code></pre>
+<p>查询结果类似以下内容：</p>
+<pre><code>***************************[ 1. row ]***************************
+File              | mysql-bin.000009
+Position          | 435
+Binlog_Do_DB      |
+Binlog_Ignore_DB  | mysql,information_schema,performance_schema,sys
+Executed_Gtid_Set |
+</code></pre>
+<p>记下 <code>File</code> 和 <code>Position</code> 的值。</p>
+<p>连接从库，使用之前创建的用户，和刚刚记下的两个值，执行以下操作来创建复制：</p>
+<pre><code class="language-sql">change master to MASTER_HOST = 'master', MASTER_PORT = 3306, MASTER_USER = 'repl', MASTER_PASSWORD = 'slavepass', MASTER_LOG_FILE = 'mysql-bin.000009', MASTER_LOG_POS = 435;
+</code></pre>
+<p>参数说明：</p>
+<ol>
+<li>MASTER_HOST：主库的主机，可以是 IP 或者主机名，这里输入我们之前配置的 <code>master</code>。</li>
+<li>MASTER_PORT：主库的端口号，使用默认端口号时可以省略这个参数。</li>
+<li>MASTER_USER：之前配置的用于复制的用户名。</li>
+<li>MASTER_PASSWORD：之前配置的用于配置的用户密码。</li>
+<li>MASTER_LOG_FILE：之前记下的主库日志文件名。</li>
+<li>MASTER_LOG_POS：之前记下的主库日志位置。</li>
+</ol>
+<p>执行以上语句后，就创建成功了。可以在从库上执行以下查询语句验证主从复制的状态：</p>
+<pre><code class="language-sql">show slave status\G;
+</code></pre>
+<p>如果 <code>Slave_IO_Running</code> 和 <code>Slave_SQL_Running</code> 两项的值都是 <code>Yes</code> 就说明成功了。</p>
+<p>如果没有成功，查询结果中的相应字段也会给出失败的信息，供排查错误。我在配置的过程中遇到了 <code>Authentication plugin 'caching_sha2_password' reported error: Authentication requires secure connection</code> 的错误，通过 Google 搜索，在主库执行了 <code>ALTER USER 'repl'@'%' IDENTIFIED WITH mysql_native_password BY 'slavepass';</code> 语句解决了问题，这个应该是验证方式不匹配导致从库连接主库失败。</p>
+<p>其他导致连接不成功的错误还包括容器之间网络不通、用户名密码或者权限配置错误、日志文件和位置配置错误等，出错时可以排查一下这些内容。</p>
+<h2 id="5-测试验证">5. 测试验证</h2>
+<p>至此就配置完成了，可以在主库创建数据库、表，或者插入、修改、删除数据来验证配置是否成功。</p>
+<h2 id="6-如果一个数据库挂掉了怎么办">6. 如果一个数据库挂掉了怎么办？</h2>
+<p>如果从库挂掉了，主库内容发生了变化，在从库再次启动后，会自动同步期间发生变化的数据。</p>
+<p>在此主要说明一下主库挂掉以后，怎样重新建立数据同步。</p>
+<p>首先，重新查看主库日志文件和位置：<code>show master status\G</code>。</p>
+<p>然后在从库执行如下步骤：</p>
+<ol>
+<li>停止复制：<code>stop slave</code>。</li>
+<li>重新配置主从复制的参数：<code>change master to MASTER_HOST = 'master', MASTER_PORT = 3306, MASTER_USER = 'repl', MASTER_PASSWORD = 'slavepass', MASTER_LOG_FILE = 'mysql-bin.000009', MASTER_LOG_POS = 435;</code></li>
+<li>启动复制：<code>start slave;</code>。</li>
+</ol>
+<hr>
+<p>立 FLAG：</p>
+<ul>
+<li>🚩研究一下前面提到的用户认证出问题的原理。</li>
+<li>🚩研究主从复制的更多细节问题。</li>
+<li>🚩写篇 Docker 入门的文。</li>
+</ul>
 ]]></content>
     </entry>
     <entry>
