@@ -1,0 +1,323 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MyCat 读写分离配置 | MQ TALK</title>
+<meta name="description" content="<del style='color:lightgrey'>MQ is short for 懵圈儿</del>" />
+<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1567846356023">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://blog.fanbin.dev/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-50640413-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-50640413-3');
+</script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://blog.fanbin.dev">
+  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1567846356023" alt="">
+  </a>
+  <h1 class="site-title">
+    MQ TALK
+  </h1>
+  <p class="site-description">
+    <del style='color:lightgrey'>MQ is short for 懵圈儿</del>
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://blog.fanbin.dev" class="menu">
+          🏠首页
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tag/programming/" class="menu">
+          🖥️编程
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tag/product/" class="menu">
+          📱产品
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tag/cognition/" class="menu">
+          📚新知
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tag/notes/" class="menu">
+          🖋️手记
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/archives" class="menu">
+          📦归档
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/tags" class="menu">
+          🏷️标签
+        </a>
+      
+    
+      
+        <a href="https://blog.fanbin.dev/post/about/" class="menu">
+          😳关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/fanbin0602" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/imfxx" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              MyCat 读写分离配置
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-09-07
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://blog-fanbin-ink.img.fanbin.ink/post/PNJ5aPHVl/0.jpeg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>这篇是基于<a href="/post/Qg_Mg199T/">另一篇</a>当中 MySQL 主从复制的示例，来用 MyCat 作为数据库中间件，实现只对外暴露一个数据库连接入口的 MySQL 读写分离。</p>
+<!-- more -->
+<h2 id="0-前提">0. 前提</h2>
+<ol>
+<li>完成 MySQL 主从复制的部署（<a href="/post/Qg_Mg199T/">传送门</a>）。</li>
+<li>还是基于 Docker，运行一个 MyCat 容器。</li>
+<li>应该就这些。</li>
+</ol>
+<h2 id="1-mycat-容器部署">1. MyCat 容器部署</h2>
+<p>首先，下载 MyCat。由于我们要不输在容器里，所以下载 Linux 的版本。</p>
+<pre><code class="language-bash">$ wget http://dl.mycat.io/1.6.7.1/Mycat-server-1.6.7.1-release-20190627191042-linux.tar.gz
+</code></pre>
+<p>此时，得到一个 <code>Mycat-server-1.6.7.1-release-20190627191042-linux.tar.gz</code> 文件。为了方便后面使用，给它改个名字。</p>
+<pre><code class="language-bash">$ mv Mycat-server-1.6.7.1-release-20190627191042-linux.tar.gz mycat.tar.gz
+</code></pre>
+<p>在当前目录解压它，并把其中的 <code>conf</code> 目录拷贝一份，供 Docker 容器挂载，这样就不需要进入到容器里面修改 MyCat 的配置。</p>
+<pre><code class="language-bash">$ tar -zxvf mycat.tar.gz
+$ cp -r mycat/conf/ conf/
+</code></pre>
+<p>准备工作完成后，开始构建容器镜像，创建一个 Dockerfile，在其中写入以下内容：</p>
+<pre><code class="language-Dockerfile">FROM openjdk:8
+ADD mycat.tar.gz /usr/local/
+VOLUME /usr/local/mycat/conf
+ENV MYCAT_HOME=/usr/local/mycat
+EXPOSE 8066 9066
+CMD [&quot;/usr/local/mycat/bin/mycat&quot;,&quot;console&quot;,&quot;&amp;&quot;]
+</code></pre>
+<p>逐行解释一下 Dockerfile 的内容：</p>
+<ol>
+<li>MyCat 基于 Java，因此使用 <code>openjdk:8</code> 镜像构建我们使用的 MyCat 镜像。</li>
+<li>将下载并重命名好的 <code>mycat.tar.gz</code> 添加到容器的 <code>/usr/local/</code> 目录。</li>
+<li>将 MyCat 的配置文件目录 <code>/usr/local/mycat/conf</code> 暴露给宿主机，启动时直接映射之前宿主机上复制好的 <code>conf</code> 目录。</li>
+<li>设置环境变量 <code>MYCAT_HOME</code>，值是 MyCat 的安装目录。</li>
+<li>暴露 8066 和 9066 两个端口。8066 端口用于外部连接数据库，类似于 MySQL 的 3306 端口；9066 是 MyCat 的管理端口。</li>
+<li>执行启动 MyCat 的命令。</li>
+</ol>
+<p>在当前目录构建镜像：</p>
+<pre><code class="language-bash">$ docker build -t mycat-1.6.7.1 .
+</code></pre>
+<p>然后启动一个容器实例：</p>
+<pre><code class="language-bash">$ docker run --name mycat -p 8066:8066 -p 9066:9066 -v /path/to/conf/:/usr/local/mycat/conf/ -d mycat-1.6.7.1 --link mysql-dn-s:mysql-slave --link mysql-dn-m:mysql-master 
+</code></pre>
+<p>注：以上命令中的 <code>/path/to/conf/</code> 指的是实际宿主机中 <code>conf</code>目录的绝对路径。同时，用 <code>--link</code> 创建了与两个数据库之间的网络连接。</p>
+<p>现在 MyCat 的容器已经跑起来了，但是在配置好数据源之前还不能用。</p>
+<h2 id="2-修改-mycat-配置">2. 修改 MyCat 配置</h2>
+<p>因为之前启动容器的时候做了配置文件目录的映射，所以我们直接在宿主机的 <code>conf</code> 目录中修改 MyCat 的配置。</p>
+<p>首先修改 <code>schema.xml</code>，主要内容如下：</p>
+<pre><code class="language-schema.xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;!DOCTYPE mycat:schema SYSTEM &quot;schema.dtd&quot;&gt;
+&lt;mycat:schema xmlns:mycat=&quot;http://io.mycat/&quot;&gt;
+
+	&lt;!-- MyCat 对外暴露的 schema --&gt;
+	&lt;schema name=&quot;test&quot; checkSQLschema=&quot;false&quot; sqlMaxLimit=&quot;100&quot; dataNode=&quot;dn1&quot;&gt;
+	&lt;/schema&gt;
+	
+	&lt;!-- 数据节点，这里我们只配置读写分离的部分，因此只配置一个节点来做读写分离的示例 --&gt;
+	&lt;dataNode name=&quot;dn1&quot; dataHost=&quot;localhost1&quot; database=&quot;test&quot; /&gt;
+	
+	&lt;!-- 这里的 balance=1 表示配置读写分离--&gt;
+	&lt;dataHost name=&quot;localhost1&quot; maxCon=&quot;1000&quot; minCon=&quot;10&quot; balance=&quot;1&quot;
+			  writeType=&quot;0&quot; dbType=&quot;mysql&quot; dbDriver=&quot;native&quot; switchType=&quot;1&quot;  slaveThreshold=&quot;100&quot;&gt;
+		&lt;!--心跳通知的查询语句，使用默认即可--&gt;
+		&lt;heartbeat&gt;select user()&lt;/heartbeat&gt;
+		&lt;!--写库配置--&gt;
+		&lt;writeHost host=&quot;hostM&quot; url=&quot;mysql-master:3306&quot; user=&quot;root&quot; password=&quot;admin123&quot;&gt;
+			&lt;!--读库配置--&gt;
+			&lt;readHost host=&quot;hostS&quot; url=&quot;mysql-slave:3306&quot; user=&quot;root&quot; password=&quot;admin123&quot; /&gt;
+		&lt;/writeHost&gt;
+	&lt;/dataHost&gt;
+	
+&lt;/mycat:schema&gt;
+</code></pre>
+<p>因为本示例只演示读写分离，不涉及分区分片等配置，因此这个配置文件很简单。</p>
+<p>下面配置 <code>server.xml</code>，只需打开文件，添加一个 MyCat 的外部访问用户即可，也可配置多个，视具体情况而定：</p>
+<pre><code class="language-server.xml">&lt;user name=&quot;root&quot; defaultAccount=&quot;true&quot;&gt;
+		&lt;property name=&quot;password&quot;&gt;admin123&lt;/property&gt;
+		&lt;property name=&quot;schemas&quot;&gt;test&lt;/property&gt;
+&lt;/user&gt;
+</code></pre>
+<p>以上作为演示，只配置了基本的用户名、密码和库，实际情况中，还可以配置读写权限，甚至是表级 DML 权限，具体可以查阅官方文档。</p>
+<p>配置好后，重启容器生效。</p>
+<h2 id="3-测试验证">3. 测试验证</h2>
+<p>使用与连接 MySQL 同样的方法，在宿主机上连接 MyCat：</p>
+<pre><code class="language-bash">$ mycli -hlocalhost -P8066 -uroot -padmin123
+</code></pre>
+<p>注：如果连接不成功，可能需要修改两台 MySQL 的用户认证配置：<code>ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'admin123';</code>。</p>
+<p>连接成功后，就可以像直接操作 MySQL 一样进行数据库操作了。</p>
+<h2 id="4-测试读写分离">4. 测试读写分离</h2>
+<p>在测试读写分离时，需要查看 MyCat 的日志来确定每此操作是在哪个数据库执行的，因此，首先需要修改以下 MyCat 的日志配置文件，来让 MyCat 把这部分日志打印出来。</p>
+<p>在 <code>conf</code> 目录的 <code>log4j2.xml</code> 文件中，修改如下内容：</p>
+<pre><code class="language-log4j2.xml">&lt;asyncRoot level=&quot;info&quot; includeLocation=&quot;true&quot;&gt;
+</code></pre>
+<p>将其中的日志级别设置为 <code>debug</code>，修改保存后重启 MyCat 容器。</p>
+<p>现在，进入 MyCat 容器中，使用如下命令，实时查看日志：</p>
+<pre><code class="language-bash">$ tail -f /usr/local/mycat/logs/mycat.log
+</code></pre>
+<p>不要关闭查看日志的窗口，另起一个终端，连接 MyCat 对数据进行操作，在日志中就可以看到每一步操作的 SQL 语句，以及对应的更多信息。</p>
+<p>比如下面两条日志：</p>
+<pre><code class="language-bash">2019-09-07 08:46:42.628 DEBUG [$_NIOREACTOR-5-RW] (io.mycat.server.NonBlockingSession.releaseConnection(NonBlockingSession.java:386)) - release connection MySQLConnection [id=14, lastTime=1567846002623, user=root, schema=test, old shema=test, borrowed=true, fromSlaveDB=true, threadId=380, charset=utf8, txIsolation=3, autocommit=true, attachment=dn1{select * from test}, respHandler=SingleNodeHandler [node=dn1{select * from test}, packetId=9], host=mysql-slave, port=3306, statusSync=io.mycat.backend.mysql.nio.MySQLConnection$StatusSync@230d92a6, writeQueue=0, modifiedSQLExecuted=false]
+</code></pre>
+<pre><code class="language-bash">2019-09-07 08:48:23.387 DEBUG [$_NIOREACTOR-5-RW] (io.mycat.server.NonBlockingSession.releaseConnection(NonBlockingSession.java:386)) - release connection MySQLConnection [id=5, lastTime=1567846103379, user=root, schema=test, old shema=test, borrowed=true, fromSlaveDB=false, threadId=587, charset=utf8, txIsolation=3, autocommit=true, attachment=dn1{insert into test(value) values(15)}, respHandler=SingleNodeHandler [node=dn1{insert into test(value) values(15)}, packetId=1], host=mysql-master, port=3306, statusSync=null, writeQueue=0, modifiedSQLExecuted=true]
+</code></pre>
+<p>从这两条日志中可以看出 MyCat 在读库执行了查询操作，并在写库执行了插入操作。</p>
+<p>👍</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#0-%E5%89%8D%E6%8F%90">0. 前提</a></li>
+<li><a href="#1-mycat-%E5%AE%B9%E5%99%A8%E9%83%A8%E7%BD%B2">1. MyCat 容器部署</a></li>
+<li><a href="#2-%E4%BF%AE%E6%94%B9-mycat-%E9%85%8D%E7%BD%AE">2. 修改 MyCat 配置</a></li>
+<li><a href="#3-%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81">3. 测试验证</a></li>
+<li><a href="#4-%E6%B5%8B%E8%AF%95%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB">4. 测试读写分离</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://blog.fanbin.dev/post/Qg_Mg199T">
+              <h3 class="post-title">
+                MySQL 主从复制
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <img src='http://blog-fanbin-ink.img.fanbin.ink/avatar.jpg' style='width:40px;border-radius:20px' />
+<p style='margin:10px;'>Writen by Fan Bin</p>
+<p style='margin:10px;'><span style="background-color:#5aceb2;">&nbsp;</span><span style="background-color:#ff7250;">&nbsp;</span><span style="background-color:#fbbe3e;">&nbsp;</span><span style="background-color:#5bb9cd;">&nbsp;</span></p>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://blog.fanbin.dev/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
