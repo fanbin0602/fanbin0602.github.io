@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.fanbin.dev</id>
     <title>MQ TALK</title>
-    <updated>2019-09-07T08:57:50.134Z</updated>
+    <updated>2019-09-07T08:59:50.385Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.fanbin.dev"/>
     <link rel="self" href="https://blog.fanbin.dev/atom.xml"/>
@@ -65,7 +65,7 @@ CMD [&quot;/usr/local/mycat/bin/mycat&quot;,&quot;console&quot;,&quot;&amp;&quot
 <h2 id="2-修改-mycat-配置">2. 修改 MyCat 配置</h2>
 <p>因为之前启动容器的时候做了配置文件目录的映射，所以我们直接在宿主机的 <code>conf</code> 目录中修改 MyCat 的配置。</p>
 <p>首先修改 <code>schema.xml</code>，主要内容如下：</p>
-<pre><code class="language-schema.xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot;?&gt;
 &lt;!DOCTYPE mycat:schema SYSTEM &quot;schema.dtd&quot;&gt;
 &lt;mycat:schema xmlns:mycat=&quot;http://io.mycat/&quot;&gt;
 
@@ -92,7 +92,7 @@ CMD [&quot;/usr/local/mycat/bin/mycat&quot;,&quot;console&quot;,&quot;&amp;&quot
 </code></pre>
 <p>因为本示例只演示读写分离，不涉及分区分片等配置，因此这个配置文件很简单。</p>
 <p>下面配置 <code>server.xml</code>，只需打开文件，添加一个 MyCat 的外部访问用户即可，也可配置多个，视具体情况而定：</p>
-<pre><code class="language-server.xml">&lt;user name=&quot;root&quot; defaultAccount=&quot;true&quot;&gt;
+<pre><code class="language-xml">&lt;user name=&quot;root&quot; defaultAccount=&quot;true&quot;&gt;
 		&lt;property name=&quot;password&quot;&gt;admin123&lt;/property&gt;
 		&lt;property name=&quot;schemas&quot;&gt;test&lt;/property&gt;
 &lt;/user&gt;
@@ -108,7 +108,7 @@ CMD [&quot;/usr/local/mycat/bin/mycat&quot;,&quot;console&quot;,&quot;&amp;&quot
 <h2 id="4-测试读写分离">4. 测试读写分离</h2>
 <p>在测试读写分离时，需要查看 MyCat 的日志来确定每此操作是在哪个数据库执行的，因此，首先需要修改以下 MyCat 的日志配置文件，来让 MyCat 把这部分日志打印出来。</p>
 <p>在 <code>conf</code> 目录的 <code>log4j2.xml</code> 文件中，修改如下内容：</p>
-<pre><code class="language-log4j2.xml">&lt;asyncRoot level=&quot;info&quot; includeLocation=&quot;true&quot;&gt;
+<pre><code class="language-xml">&lt;asyncRoot level=&quot;info&quot; includeLocation=&quot;true&quot;&gt;
 </code></pre>
 <p>将其中的日志级别设置为 <code>debug</code>，修改保存后重启 MyCat 容器。</p>
 <p>现在，进入 MyCat 容器中，使用如下命令，实时查看日志：</p>
