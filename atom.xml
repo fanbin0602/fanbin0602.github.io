@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.fanbin.dev</id>
     <title>MQ TALK</title>
-    <updated>2019-09-07T08:59:50.385Z</updated>
+    <updated>2019-09-24T02:27:54.815Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.fanbin.dev"/>
     <link rel="self" href="https://blog.fanbin.dev/atom.xml"/>
@@ -38,7 +38,7 @@
 $ cp -r mycat/conf/ conf/
 </code></pre>
 <p>准备工作完成后，开始构建容器镜像，创建一个 Dockerfile，在其中写入以下内容：</p>
-<pre><code class="language-Dockerfile">FROM openjdk:8
+<pre><code>FROM openjdk:8
 ADD mycat.tar.gz /usr/local/
 VOLUME /usr/local/mycat/conf
 ENV MYCAT_HOME=/usr/local/mycat
