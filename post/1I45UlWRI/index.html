@@ -2,9 +2,9 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>理解 Javascript 中变量的作用域 | MQ TALK</title>
-<meta name="description" content="<del style='color:lightgrey'>MQ is short for 懵圈儿</del>" />
-<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1569292071753">
+<title>理解 Javascript 中变量的作用域 | MQ LOG</title>
+<meta name="description" content="<span style='color:lightgrey'>/* MQ is short for 懵圈儿 */</span>" />
+<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1571277336137">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://blog.fanbin.dev/styles/main.css">
@@ -29,13 +29,13 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://blog.fanbin.dev">
-  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1569292071753" alt="">
+  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1571277336137" alt="">
   </a>
   <h1 class="site-title">
-    MQ TALK
+    MQ LOG
   </h1>
   <p class="site-description">
-    <del style='color:lightgrey'>MQ is short for 懵圈儿</del>
+    <span style='color:lightgrey'>/* MQ is short for 懵圈儿 */</span>
   </p>
   <div class="menu-container">
     
@@ -121,7 +121,7 @@
                 2015-07-05
               </span>
               <span>
-                2 min read
+                7 min read
               </span>
               
                 <a href="https://blog.fanbin.dev/tag/programming" class="post-tag">
@@ -208,7 +208,7 @@ test();
 <p>当 Javascript 代码需要查询一个变量 <code>x</code> 的时候，会有一个被称为「变量名解析」的过程。它会首先检查作用域链的第一个对象，如果这个对象包含名为 <code>x</code> 的属性，那么就采用这个属性的值，否则，会继续检查第二个对象，依此类推。当检查到最后一个对象的时候仍然没有相应的属性，则这个变量会被认定为是「未定义」的。</p>
 <p>在全局的 Javascript 执行环境中，作用域链中只包含一个对象，就是全局对象。而在函数的执行环境中，则同时包含函数的调用对象。由于 Javascript 的函数是可以嵌套的，因此每个函数执行环境的作用域链可能包含不同数目个对象，一个非嵌套的函数的执行环境中，作用域链包含了这个函数的调用对象和全局对象，而在嵌套的函数的执行环境中，作用域链包含了嵌套的每一层函数的调用对象以及全局变量。</p>
 <p>我们可以用一个图来直观地解释作用域链和变量名解析的过程：</p>
-<p><img src="http://blog-fanbin-ink.img.fanbin.ink/post/1I45UlWRI/1.png" alt="Javascript 作用域链he变量名解析"></p>
+<figure data-type="image" tabindex="1"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/1I45UlWRI/1.png" alt="Javascript 作用域链he变量名解析"></figure>
 
               </div>
               <div class="toc-container">
