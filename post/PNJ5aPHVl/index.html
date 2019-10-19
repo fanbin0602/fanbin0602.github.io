@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MyCat 读写分离配置 | MQ LOG</title>
 <meta name="description" content="<span style='color:lightgrey'>/* MQ is short for 懵圈儿 */</span>" />
-<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1571277336137">
+<link rel="shortcut icon" href="https://blog.fanbin.dev/favicon.ico?v=1571447674333">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://blog.fanbin.dev/styles/main.css">
@@ -29,7 +29,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://blog.fanbin.dev">
-  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1571277336137" alt="">
+  <img class="avatar" src="https://blog.fanbin.dev/images/avatar.png?v=1571447674333" alt="">
   </a>
   <h1 class="site-title">
     MQ LOG
@@ -302,7 +302,6 @@ Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea<
       if (mainNavLinks[index + 1]) {
         nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
       }
-      console.log('section.offsetHeight', section.offsetHeight);
       if (section.offsetTop <= fromTop) {
         if (nextSection) {
           if (nextSection.offsetTop > fromTop) {
