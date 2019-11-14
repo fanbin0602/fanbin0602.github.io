@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.fanbin.dev</id>
     <title>MQ LOG</title>
-    <updated>2019-10-19T01:39:37.067Z</updated>
+    <updated>2019-11-14T12:12:34.583Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.fanbin.dev"/>
     <link rel="self" href="https://blog.fanbin.dev/atom.xml"/>
@@ -10,6 +10,35 @@
     <logo>https://blog.fanbin.dev/images/avatar.png</logo>
     <icon>https://blog.fanbin.dev/favicon.ico</icon>
     <rights>All rights reserved 2019, MQ LOG</rights>
+    <entry>
+        <title type="html"><![CDATA[感冒这件小事儿]]></title>
+        <id>https://blog.fanbin.dev/post/c-vBEril7</id>
+        <link href="https://blog.fanbin.dev/post/c-vBEril7">
+        </link>
+        <updated>2019-11-14T11:46:10.000Z</updated>
+        <summary type="html"><![CDATA[<p>天气又开始变冷变干了，又到了容易感冒的季节，正好读了卓克的一篇关于感冒的文章，了解到了一些跟感冒有关的以前不知道的事儿，分享一下。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>天气又开始变冷变干了，又到了容易感冒的季节，正好读了卓克的一篇关于感冒的文章，了解到了一些跟感冒有关的以前不知道的事儿，分享一下。</p>
+<!-- more -->
+<h3 id="感冒到底是啥">感冒到底是啥？</h3>
+<p>感冒其实是病毒在鼻粘膜上繁殖引起的病症，主要分为两类：</p>
+<ul>
+<li>普通感冒</li>
+<li>流行性感冒</li>
+</ul>
+<p>划分的标准就是要看是什么病毒引起的感冒，只要不是流感病毒引起的，都算是普通感冒。要把流行性感冒和其他的普通感冒区分开，是因为流感的症状比较严重，而且流感病毒有一种特定结构，可以单拎出来防治。普通感冒的病毒有好几百中。</p>
+<h3 id="怎么预防感冒">怎么预防感冒？</h3>
+<p>第一，别没事儿乱摸眼睛和鼻子。所有公共场合的用品，上面落有普通感冒病毒的概率是 50%，它们被粘在手上平均可以停留两个小时。手上沾了感冒病毒后，如果用手抠鼻子，就相当于直接把病毒带到了鼻粘膜上，如果用手揉眼睛，眼睛肿又泪管，跟鼻子是通着的，病毒就会顺着泪管感染到鼻粘膜上。</p>
+<p>第二，勤洗手。我们总是时不时会忍不住抠鼻子或者揉眼睛，所以勤洗手就很重要。据统计，如果经常认真洗手，一年中感冒的次数可以减半。</p>
+<p>第三，戴口罩。主要是在人多聚集的地方，戴口罩可以有效防范感冒病毒的传递。</p>
+<h3 id="我们和感冒之间的误会">我们和感冒之间的误会</h3>
+<p>第一，着凉了、冻着了，会感冒吗？它们和感冒之间没有因果关系。入秋之后，空气干燥，风大，有利于病毒飞入鼻腔，引起感冒。刮风、降温只是总跟感冒一起出现，但并不存在因果关系。</p>
+<p>第二，增强抵抗力回不容易感冒吗？不会。抵抗力越强的人，杀气病毒来越迅猛，因此感冒症状会越剧烈。头疼、鼻涕、发烧，这些都是身体杀灭病毒的措施，而并不是病毒伤害身体的手段。</p>
+<p>第三：抗生素能防止感冒吗？不能。抗生素是对付细菌的。</p>
+<h3 id="感冒了到底该怎么办">感冒了到底该怎么办？</h3>
+<p>普通人得了普通感冒，多喝水、多休息就行了。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MyCat 读写分离配置]]></title>
         <id>https://blog.fanbin.dev/post/PNJ5aPHVl</id>
