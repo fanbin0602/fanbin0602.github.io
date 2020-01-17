@@ -2,14 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.fanbin.dev</id>
     <title>MQ LOG</title>
-    <updated>2019-11-15T03:49:31.748Z</updated>
+    <updated>2020-01-17T01:30:24.728Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.fanbin.dev"/>
     <link rel="self" href="https://blog.fanbin.dev/atom.xml"/>
     <subtitle>&lt;span style=&apos;color:lightgrey;font-size:12px&apos;&gt;/* MQ is short for 懵圈儿 */&lt;/span&gt;</subtitle>
     <logo>https://blog.fanbin.dev/images/avatar.png</logo>
     <icon>https://blog.fanbin.dev/favicon.ico</icon>
-    <rights>All rights reserved 2019, MQ LOG</rights>
+    <rights>All rights reserved 2020, MQ LOG</rights>
+    <entry>
+        <title type="html"><![CDATA[你当像鸟飞往你的山]]></title>
+        <id>https://blog.fanbin.dev/post/OT1Y7dJZK</id>
+        <link href="https://blog.fanbin.dev/post/OT1Y7dJZK">
+        </link>
+        <updated>2020-01-17T01:26:13.000Z</updated>
+        <summary type="html"><![CDATA[<p>如果不是提前知道书里写的是真实的经历，我会以为这是一本虚构作品。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>如果不是提前知道书里写的是真实的经历，我会以为这是一本虚构作品。</p>
+<!-- more -->
+<p>书名「你当像鸟飞往你的山」这句话取自圣经，表达的是逃离和找到新的信仰。英文原版书名《Educated》非常直白，在世界各地区的翻译版本中，中文书名是我最喜欢的，不仅读起来上口，而且非常贴合作者的经历和书中要表达的思想。</p>
+<p>作者塔拉生活在山区，父亲对宗教有着狂热的偏执，他不相信政府、不相信医院、不相信学校，不相信除了上帝以外的一切。全家人都生活在他的笼罩当中，出生的孩子没有出生证明，生病了不去医院就医也不吃药，孩子长大了也不去上学……令人感到惊讶的是，这发生在现代社会，发生在当今世界最发达的国家之一，美国。</p>
+<p>随着她逐渐长大，家庭环境让她痛苦。在一个哥哥的启发下，她心里埋下了离开家去上大学的打算，并且通过自己的努力，她终于走进了新的世界——一个让她感觉自己格格不入的新世界。</p>
+<p>在新世界里，她没有基本的常识，不懂与人交往的规则，更不了解人们的禁忌。她努力摆脱无知，重塑自己，代价是与家庭决裂。背叛过去，飞往自己的山。</p>
+<p>作者的经历，离大部分人都很远，但是从她的书中，我能得到的启发是很深刻的。教育的意义、无知的代价、生活的真实，以及一个人想要改头换面有多艰难。</p>
+<p>在福布斯杂志的访谈中，作者说：</p>
+<blockquote>
+<p>教育意味着获得不同的视角，理解不同的人、经历和历史。接受教育，但不要让你的教育僵化成傲慢。教育应该是思想的拓展，同理心的深化，视野的开阔。它不应该使你的偏见变得更顽固。如果人们受过教育，他们应该变得不那么确定，而不是更确定。他们应该多听，少说，对差异满怀激情，热爱那些不同于他们的想法。</p>
+</blockquote>
+<p>推荐你读这本书。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[感冒这件小事儿]]></title>
         <id>https://blog.fanbin.dev/post/c-vBEril7</id>
@@ -293,11 +315,11 @@ Executed_Gtid_Set |
 <p>这个产品列表就是一个包含五个元素的数组，每个元素是一个产品名称。</p>
 <h3 id="数组在内存中是怎么保存的">数组在内存中是怎么保存的</h3>
 <p>计算机在内存中，会分配若干个连续的内存单元来存储数组。可以把内存看作超市门口的储物柜，储物柜的每个格子就是一个内存单元，有些格子放了东西，有些格子是空的。当计算机需要存储这个五个元素的数组时，就需要在这个储物柜中找出五个连续排列的空格子，把数组中的五个元素按顺序放进去。</p>
-<figure data-type="image" tabindex="1"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/1.png" alt=""></figure>
+<figure data-type="image" tabindex="1"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/1.png" alt="" loading="lazy"></figure>
 <h3 id="在数组中读取元素">在数组中读取元素</h3>
 <p>数组中元素顺序都是不变的，因此它们有一个天然的属性——索引，也可以理解为元素的序号，一般是从 0 开始，第一个元素的索引是 0，第二个元素的索引是 1，以此类推。计算机程序只需要知道存储数组的内存地址，也就是数组中第一个元素的内存地址，就可以根据每个元素的索引，计算出任何元素的内存地址，从而快速找到它们。</p>
 <p>如下图：</p>
-<figure data-type="image" tabindex="2"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/2.png" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/2.png" alt="" loading="lazy"></figure>
 <p>灰色的格子表示已经被占用的内存（想象这是一个储物柜，有一些储物格子已经放了东西），我们要存储的数组元素被放在五个连续的原先空着的格子里。</p>
 <p>内存的每个格子都有一个地址，为了描述简单，我们假设这些格子的内存地址分别是1000、1001、1002……，因此我们保存的五个数组元素的内存地址就是1010、1011、1012、1012、1014。数组本身会记有第一个格子的内存地址，这样计算机可以一步就访问到任意一个内存地址的数据。因此，数组中任意一个元素的内存地址，就是第一个格子的内存地址，加上元素的索引。比如，计算机要访问第三个元素“iPhone”，就可以直接访问地址是1012（第一个元素的地址1010，加第三个元素的下标2）的内存格子，得到字符串“iPhone”。</p>
 <p>因此，读取数组中一个元素，只需要一步操作，记为 <code>O(1)</code>。</p>
@@ -305,7 +327,7 @@ Executed_Gtid_Set |
 <h3 id="在数组中查找元素">在数组中查找元素</h3>
 <p>查找操作与读取操作正好相反，读取操作是已知元素的索引，去内存中获取它的值。而查找操作是给定一个值，检查数组中是否包含这个值，以及它在数组中的什么位置。</p>
 <p>查找元素最直接的方式，就是按顺序轮流读取数组中的每个元素，看是不是我们要找的那一个，当找到的时候，就知道了它在数组中的位置，也就是元素的索引下标，如果数组中所有的元素都不是我们要找的，那它就不在这个数组中。</p>
-<figure data-type="image" tabindex="3"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/3.png" alt=""></figure>
+<figure data-type="image" tabindex="3"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/3.png" alt="" loading="lazy"></figure>
 <p>以上就是一个数组中查找元素的<strong>算法</strong>，它的名字叫线性查找。如果我们要分析这个算法的执行速度，就需要知道这个算法要执行多少步操作。在最坏的情况下，比如，我们要找的元素在数组的末尾，或者不在数组中，那么，在一个长度为 N 的数组中查找元素需要执行 N 步操作。复杂度记为<code>O(n)</code>。</p>
 <p>从上面的描述中可以看出，线性查找算法显然是一个很笨的方法，那有没有聪明一点的方法呢？</p>
 <h2 id="二分查找">二分查找</h2>
@@ -316,13 +338,13 @@ Executed_Gtid_Set |
 <p>在一个有序的数组中查找元素，同样可以用这个方法。这种算法叫「二分查找」。</p>
 <h3 id="二分查找的步骤">二分查找的步骤</h3>
 <p>之所以叫二分查找，是因为，这个算法的步骤是，取数组中间的一个值，这样数组就会被分成两部分，根据中间的值与查找目标值的大小对比（也可以是字母顺序对比，或者其他方法对比，具体依数组内元素的排序方法而定），来选取中间值之前或之后的那部分，再进行相同的操作，直到找到目标值。</p>
-<figure data-type="image" tabindex="4"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/4.2.png" alt=""></figure>
+<figure data-type="image" tabindex="4"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/4.2.png" alt="" loading="lazy"></figure>
 <p>使用二分查找算法的好处是，能用更快的速度，也就是更少的操作步骤找到目标值。例如在一个长度为 100 的有序数组中，使用线性查找算法，最多需要操作 100 步，而使用二分查找算法，最多只需要 7 步，二分查找算法的时间复杂度是 <code>O(log n)</code>。</p>
 <p>下图是随着元素数量的增加，两种复杂度的算法需要执行操作的步数对比。横轴是操作的元素数量，纵轴是算法需要执行的操作步数。可见，随着元素数量增加，两者的差距会越来越大。</p>
-<figure data-type="image" tabindex="5"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/5.png" alt=""></figure>
+<figure data-type="image" tabindex="5"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/5.png" alt="" loading="lazy"></figure>
 <h3 id="算法复杂度的表示">算法复杂度的表示</h3>
 <p>关于算法时间复杂度，除了上面介绍的两种，常见的还有 <code>O(n)</code>、<code>O(n*log n)</code>、<code>O(n^2)</code>、<code>O(n!)</code>等，算法的复杂度本质上指的是，随着操作元素的增加，算法需要执行的步数的增速。如果一个数组中只有一个元素，那线性查找和二分查找的执行步骤是一样多的。但是随着元素数量的增加，线性查找的操作步数呈线性增长，而二分查找的操作步数呈对数增长，两者差距很大。</p>
-<figure data-type="image" tabindex="6"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/6.png" alt=""></figure>
+<figure data-type="image" tabindex="6"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/3UuCV633y/6.png" alt="" loading="lazy"></figure>
 <h2 id="总结和预告">总结和预告</h2>
 <p>这篇介绍了最基本的数据结构——数组，以及最简单却有趣的算法——二分查找，顺便了解了使用大O记法表示算法的时间复杂度。总结如下：</p>
 <ol>
@@ -573,7 +595,7 @@ test();
 <p>当 Javascript 代码需要查询一个变量 <code>x</code> 的时候，会有一个被称为「变量名解析」的过程。它会首先检查作用域链的第一个对象，如果这个对象包含名为 <code>x</code> 的属性，那么就采用这个属性的值，否则，会继续检查第二个对象，依此类推。当检查到最后一个对象的时候仍然没有相应的属性，则这个变量会被认定为是「未定义」的。</p>
 <p>在全局的 Javascript 执行环境中，作用域链中只包含一个对象，就是全局对象。而在函数的执行环境中，则同时包含函数的调用对象。由于 Javascript 的函数是可以嵌套的，因此每个函数执行环境的作用域链可能包含不同数目个对象，一个非嵌套的函数的执行环境中，作用域链包含了这个函数的调用对象和全局对象，而在嵌套的函数的执行环境中，作用域链包含了嵌套的每一层函数的调用对象以及全局变量。</p>
 <p>我们可以用一个图来直观地解释作用域链和变量名解析的过程：</p>
-<figure data-type="image" tabindex="1"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/1I45UlWRI/1.png" alt="Javascript 作用域链he变量名解析"></figure>
+<figure data-type="image" tabindex="1"><img src="http://blog-fanbin-ink.img.fanbin.ink/post/1I45UlWRI/1.png" alt="Javascript 作用域链he变量名解析" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
