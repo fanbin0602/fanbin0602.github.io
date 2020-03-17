@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.fanbin.dev</id>
     <title>MQ LOG</title>
-    <updated>2020-03-17T01:30:38.662Z</updated>
+    <updated>2020-03-17T01:33:48.451Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.fanbin.dev"/>
     <link rel="self" href="https://blog.fanbin.dev/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2020, MQ LOG</rights>
     <entry>
         <title type="html"><![CDATA[我们的数学宇宙]]></title>
-        <id>https://blog.fanbin.dev/post/MCnm6dUNQ</id>
-        <link href="https://blog.fanbin.dev/post/MCnm6dUNQ">
+        <id>https://blog.fanbin.dev/post/MCnm6dUNQ/</id>
+        <link href="https://blog.fanbin.dev/post/MCnm6dUNQ/">
         </link>
         <updated>2020-03-17T01:17:38.000Z</updated>
         <summary type="html"><![CDATA[<p>这篇是《穿越平行宇宙》的读书笔记。</p>
@@ -79,8 +79,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[读书：《人的全景》]]></title>
-        <id>https://blog.fanbin.dev/post/Qjk-DfcGE</id>
-        <link href="https://blog.fanbin.dev/post/Qjk-DfcGE">
+        <id>https://blog.fanbin.dev/post/Qjk-DfcGE/</id>
+        <link href="https://blog.fanbin.dev/post/Qjk-DfcGE/">
         </link>
         <updated>2020-02-15T16:17:34.000Z</updated>
         <summary type="html"><![CDATA[<p>受肺炎疫情的影响，春节假期那几天在家宅了半个月，虽然工作日需要在家办公，但是几乎不出门，省下来的时间可以做很多事情。我读了本书，叫《人的全景》。</p>
@@ -110,8 +110,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[你当像鸟飞往你的山]]></title>
-        <id>https://blog.fanbin.dev/post/OT1Y7dJZK</id>
-        <link href="https://blog.fanbin.dev/post/OT1Y7dJZK">
+        <id>https://blog.fanbin.dev/post/OT1Y7dJZK/</id>
+        <link href="https://blog.fanbin.dev/post/OT1Y7dJZK/">
         </link>
         <updated>2020-01-17T01:26:13.000Z</updated>
         <summary type="html"><![CDATA[<p>如果不是提前知道书里写的是真实的经历，我会以为这是一本虚构作品。</p>
@@ -132,8 +132,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[感冒这件小事儿]]></title>
-        <id>https://blog.fanbin.dev/post/c-vBEril7</id>
-        <link href="https://blog.fanbin.dev/post/c-vBEril7">
+        <id>https://blog.fanbin.dev/post/c-vBEril7/</id>
+        <link href="https://blog.fanbin.dev/post/c-vBEril7/">
         </link>
         <updated>2019-11-14T11:46:10.000Z</updated>
         <summary type="html"><![CDATA[<p>天气又开始变冷变干了，又到了容易感冒的季节，正好读了卓克的一篇关于感冒的文章，了解到了一些跟感冒有关的以前不知道的事儿，分享一下。</p>
@@ -162,8 +162,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[MyCat 读写分离配置]]></title>
-        <id>https://blog.fanbin.dev/post/PNJ5aPHVl</id>
-        <link href="https://blog.fanbin.dev/post/PNJ5aPHVl">
+        <id>https://blog.fanbin.dev/post/PNJ5aPHVl/</id>
+        <link href="https://blog.fanbin.dev/post/PNJ5aPHVl/">
         </link>
         <updated>2019-09-07T07:51:47.000Z</updated>
         <summary type="html"><![CDATA[<p>这篇是基于<a href="/post/Qg_Mg199T/">另一篇</a>当中 MySQL 主从复制的示例，来用 MyCat 作为数据库中间件，实现只对外暴露一个数据库连接入口的 MySQL 读写分离。</p>
@@ -276,8 +276,8 @@ CMD [&quot;/usr/local/mycat/bin/mycat&quot;,&quot;console&quot;,&quot;&amp;&quot
     </entry>
     <entry>
         <title type="html"><![CDATA[MySQL 主从复制]]></title>
-        <id>https://blog.fanbin.dev/post/Qg_Mg199T</id>
-        <link href="https://blog.fanbin.dev/post/Qg_Mg199T">
+        <id>https://blog.fanbin.dev/post/Qg_Mg199T/</id>
+        <link href="https://blog.fanbin.dev/post/Qg_Mg199T/">
         </link>
         <updated>2019-09-07T01:31:11.000Z</updated>
         <summary type="html"><![CDATA[<p>本文演示一个简单的 MySQL 主从复制的示例。</p>
@@ -396,8 +396,8 @@ Executed_Gtid_Set |
     </entry>
     <entry>
         <title type="html"><![CDATA[数组和二分查找]]></title>
-        <id>https://blog.fanbin.dev/post/3UuCV633y</id>
-        <link href="https://blog.fanbin.dev/post/3UuCV633y">
+        <id>https://blog.fanbin.dev/post/3UuCV633y/</id>
+        <link href="https://blog.fanbin.dev/post/3UuCV633y/">
         </link>
         <updated>2019-07-24T14:20:54.000Z</updated>
         <summary type="html"><![CDATA[<p>这篇总结一下数组和二分查找算法。数组是计算机科学中最基础的数据结构，二分查找算法是一种最简单却有趣的算法。它们是走进算法世界最先接触的东西。</p>
@@ -457,8 +457,8 @@ Executed_Gtid_Set |
     </entry>
     <entry>
         <title type="html"><![CDATA[从数据结构和算法说起]]></title>
-        <id>https://blog.fanbin.dev/post/KjvN5t32S</id>
-        <link href="https://blog.fanbin.dev/post/KjvN5t32S">
+        <id>https://blog.fanbin.dev/post/KjvN5t32S/</id>
+        <link href="https://blog.fanbin.dev/post/KjvN5t32S/">
         </link>
         <updated>2019-07-18T16:01:50.000Z</updated>
         <summary type="html"><![CDATA[<p>之前的一个月，是我裸辞以后找工作的时间。出于自己的上进心，以及面试官对我的「虐待」，我开始认真复习了一些数据结构和算法的知识。有了新的收获，做一些记录。</p>
@@ -497,8 +497,8 @@ Executed_Gtid_Set |
     </entry>
     <entry>
         <title type="html"><![CDATA[第一个小程序和第一笔赞赏]]></title>
-        <id>https://blog.fanbin.dev/post/OhsLHjLan</id>
-        <link href="https://blog.fanbin.dev/post/OhsLHjLan">
+        <id>https://blog.fanbin.dev/post/OhsLHjLan/</id>
+        <link href="https://blog.fanbin.dev/post/OhsLHjLan/">
         </link>
         <updated>2018-03-28T01:55:35.000Z</updated>
         <summary type="html"><![CDATA[<p>上一个农历年的年底，对小程序开发产生了兴趣，且正好看到「知晓云」这个服务可以在有限条件内免费使用，于是就开始利用业余时间开发起了一个小程序「藏书助手」。</p>
@@ -541,8 +541,8 @@ Executed_Gtid_Set |
     </entry>
     <entry>
         <title type="html"><![CDATA[理性派的礼物]]></title>
-        <id>https://blog.fanbin.dev/post/xTJsTjgUD</id>
-        <link href="https://blog.fanbin.dev/post/xTJsTjgUD">
+        <id>https://blog.fanbin.dev/post/xTJsTjgUD/</id>
+        <link href="https://blog.fanbin.dev/post/xTJsTjgUD/">
         </link>
         <updated>2018-03-16T02:08:21.000Z</updated>
         <summary type="html"><![CDATA[<p>前段时间读了桥水基金的创始人瑞·达利欧的《原则》这本书，不得不说，这正是我一直想读的一本真实世界的游戏攻略，作者在书里分享了自己 40 多年的生活和工作原则，这些可执行的原则浓缩了他的智慧和哲学，作者认为，正是这些原则使他获得了今天的成就。</p>
